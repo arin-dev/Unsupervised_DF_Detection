@@ -1,0 +1,61 @@
+# Ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*.so
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+.df_btp/
+
+# Ignore TensorFlow model checkpoints and logs
+checkpoints/
+*.ckpt
+*.ckpt.*
+*.h5
+
+# TensorFlow event files (used for TensorBoard logs)
+logs/
+events.out.tfevents.*
+
+# Ignore large data files (adjust based on your project structure)
+# data/
+datasets/
+*.csv
+*.tsv
+*.zip
+*.tar.gz
+*.h5
+*.npz  # Compressed numpy arrays
+
+# Ignore large binary files (common in ML projects)
+*.bin
+*.pb  # TensorFlow protobuf files
+
+# Ignore local config or temporary files
+*.swp
+*.swo
+*.tmp
+*.DS_Store
+Thumbs.db
+
+# Ignore VS Code project files
+.vscode/
+
+# Ignore Jupyter Notebook auto-generated metadata files
+*.ipynb-meta
+
+# Ignore system-generated files
+*.log
+
+#ignore custom files
+\#*
+*.whl
+*.pdf
+mix/
+save/
+pseudo_labels/
+BTP.zip
+sample_prompts.txt
+celeb_dataset/
