@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 
 import torch
 import torch.nn as nn
@@ -80,10 +80,3 @@ class ECLoss(nn.Module):
         loss = loss.view(anchor_count, batch_size).mean()
 
         return loss
-
-
-
-
-
-
-

@@ -22,25 +22,17 @@ from model import ECL
 
 def args_func():
     parser = argparse.ArgumentParser('argument for enhanced contrastive learner training')
+    
 
-    parser.add_argument('--print_freq', type=int, default=100,
-                        help='print frequency')
-    parser.add_argument('--batch_size', type=int, default=128,
-                        help='batch_size')
-    parser.add_argument('--num_workers', type=int, default=16,
-                        help='num of workers to use')
-    parser.add_argument('--epochs', type=int, default=1000,
-                        help='number of training epochs')
-    parser.add_argument('--learning_rate', type=float, default=0.0001,
-                        help='learning rate')
-    parser.add_argument('--weight_decay', type=float, default=1e-4,
-                        help='weight decay')
-    parser.add_argument('--select_confidence_sample', type=int, default=None,
-                        help='epoch of select confidence sample')
-    parser.add_argument('--k', type=float, default=None,
-                        help='select top k confidence samples')
-    parser.add_argument('--temp', type=float, default=0.07,
-                        help='temperature for loss function')
+    parser.add_argument('--print_freq', type=int, default=100, help='print frequency')
+    parser.add_argument('--batch_size', type=int, default=128, help='batch_size')
+    parser.add_argument('--num_workers', type=int, default=16, help='num of workers to use')
+    parser.add_argument('--epochs', type=int, default=1000, help='number of training epochs')
+    parser.add_argument('--learning_rate', type=float, default=0.0001, help='learning rate')
+    parser.add_argument('--weight_decay', type=float, default=1e-4, help='weight decay')
+    parser.add_argument('--select_confidence_sample', type=int, default=None, help='epoch of select confidence sample')
+    parser.add_argument('--k', type=float, default=None, help='select top k confidence samples')
+    parser.add_argument('--temp', type=float, default=0.07, help='temperature for loss function')
     parser.add_argument('--backbone', type=str, default='Xception')
     parser.add_argument('--data_folder', type=str, default=None, help='path to DF dataset')
     parser.add_argument('--pseudo_label_file', type=str, default=None, help='path to pseudo_label.json')
@@ -180,7 +172,8 @@ def save_path(args):
     model_path = './save/SupCon/{}_models'.format(data_folder_name)
     tb_path = './save/SupCon/{}_tensorboard'.format(data_folder_name)
 
-    save_time = str(datetime.datetime.now())
+    # save_time = str(datetime.datetime.now())  ## original
+    save_time = datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")  ## my updated code
 
     tb_folder = os.path.join(tb_path, save_time)
     if not os.path.isdir(tb_folder):
@@ -221,7 +214,7 @@ def main():
         time1 = time.time()
 
         if epoch % args.select_confidence_sample == 0 and epoch != args.epochs:
-            
+            print("Inside the training epochs.. YAY!!") ## debug
             # save the model from the previous cycle
             save_file = os.path.join(save_folder, 'ckpt_epoch_{epoch}.pth'.format(epoch=epoch))
             save_model(model, optimizer, args, epoch, save_file)

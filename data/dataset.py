@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 import os
 from PIL import Image
 import torch
@@ -51,5 +50,3 @@ class CustomImageDataset(Dataset):
             image = self.transform(image)
         
         return image, label, img_name
-
-    
